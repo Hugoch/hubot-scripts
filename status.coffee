@@ -10,6 +10,7 @@
 #   hubot what are you monitoring - show list of monitored URLs
 #   hubot status - retrieve status of monitored URLs
 #   hubot monitor every <n> minutes - set hubot to monitor your URLs and warn you if their status change
+#   hubot stop monitoring - stop automatic monitoring
 #
 # Notes:
 #
@@ -92,7 +93,6 @@ module.exports = (robot) ->
     robot.respond /what are you monitoring/i, (res)->
         urls = robot.brain.get "statusUrlList"
         urls ?= []
-        console.log(urls)
 
         if urls.length > 0
             res.reply "Here's the list of monitored URLs:\n\n" + urls.join('\n')
